@@ -1,4 +1,3 @@
-tehdään epäsynkronisointi
 # Ohjelmistotekniikka
 ## Tehtävät
 Sisältää kurssin *ohjelmistotekniikka* palautukset:
