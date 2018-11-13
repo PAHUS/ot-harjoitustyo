@@ -14,7 +14,7 @@ Sovelluspohjalla voi perjaatteessa toteuttaa myös muita soluautomaatteja, kuten
 tai Game Of Lifen muunnoksia 
 
 ## Suunnitellut toiminnallisuudet
--Graafinen käyttöliittymä, jossa käyttäjä voi määritellä alkutilan
--Animaatio automaatin iteraatioista
--Alkutilojen tallennus tietokantaan ja tallennettujen alkutilojen lataus
+- Graafinen käyttöliittymä, jossa käyttäjä voi määritellä alkutilan
+- Animaatio automaatin iteraatioista
+- Alkutilojen tallennus tietokantaan ja tallennettujen alkutilojen lataus
 
