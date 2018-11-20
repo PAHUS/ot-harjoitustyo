@@ -3,7 +3,11 @@ package cellularAutomata;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println(hello());
+        Grid grid = new Grid(5,5);
+        
+        
+        
+        
     }
     
     public static String hello(){
