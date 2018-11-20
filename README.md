@@ -26,5 +26,6 @@ Creates a test coverage report to _target/site/jacoco/index.html_ which can be o
 
 ## Documentation
 [Specification document](https://github.com/PAHUS/ot-harjoitustyo/blob/master/laskarit/viikko2/dokumentointi/alustavaMaarittely.md),
+
 [Work time bookkeeping](https://github.com/PAHUS/ot-harjoitustyo/blob/master/laskarit/viikko2/dokumentointi/tyoaikakirjanpito.md)
 
