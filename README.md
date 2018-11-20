@@ -3,7 +3,7 @@ This application is a cellular automata implementation with a graphical user int
 
 ## Releases
 ### Week 3
-I have completed the application logic with Game of Life implementation. The application can calculate the next generation of the automata with the data of the current generation. Application has several JUnit tests: like counting alive neighbours and making sure class constructors work properly. Application also supports maven testing with Jacoco.
+I have completed the application logic with Game of Life implementation. The application can calculate the next generation of the automata with the data of the current generation. The application has several JUnit tests: like counting alive neighbours and making sure class constructors work properly. It also supports maven testing with Jacoco and launching the application from the command line.
 
 ## Command line commands
 ### Running the program
