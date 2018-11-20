@@ -7,17 +7,17 @@ I have completed the application logic with Game of Life implementation. The app
 
 ## Command line commands
 ### Running the program
-### Run file from command line:
+Run file from command line:
 ```
 mvn compile exec:java -Dexec.mainClass=cellularautomata.Main
 
 ```
 ### Testing
-#### Test:
+Test with maven:
 ```
 mvn test
 ```
-#### Test coverage:
+Test coverage:
 ```
 mvn jacoco:report
 ```
