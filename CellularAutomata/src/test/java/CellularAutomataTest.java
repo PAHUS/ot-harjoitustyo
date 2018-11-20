@@ -4,11 +4,11 @@
  * and open the template in the editor.
  */
 
-import cellularAutomata.Main;
+import cellularAutomata.Grid;
 import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertThat;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 /**
  *
@@ -24,8 +24,9 @@ public class CellularAutomataTest {
     }
     
     @Test
-    public void testMethod() {
-        assertThat(Main.hello(), is("Hello World"));
+    public void gridSizeIsCorrect() {
+        Grid grid = new Grid(5,5);
+        assertThat(grid.size(), is(25));
     }
     
     

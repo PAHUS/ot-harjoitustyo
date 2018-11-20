@@ -20,4 +20,7 @@ public class Grid {
         Arrays.fill(states, new Cell(false));
     }
     
+    public int size() {
+        return this.states.length;
+    }
 }
