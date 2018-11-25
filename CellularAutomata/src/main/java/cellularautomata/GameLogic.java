@@ -22,11 +22,20 @@ public class GameLogic {
 
     
     public void iterate(){
-        
+        boolean[][] nextGen = this.grid.copyStates();
+        for(int i= 0; i<grid.getxSize();i++){
+            for(int j=0; j<grid.getySize(); j++){ //iterate over the array and count next generation values
+                boolean current = grid.getCoordinate(i, j); //get current state
+                int neighbors = this.aliveNeighbors(i, j); //count neighbors
+                boolean state = rules.nextState(current, neighbors); //calculate next state
+                
+                nextGen[i][j] = state; //SET NEXT STATE
+            }
+        }
+        this.grid.setStates(nextGen); //Change the state of the Grid to next generation
     }
     
     public int aliveNeighbors(int x, int y){
-        //JOS HUONOT INDEKSIT???
         int[] neighborhood = this.getNeighborhood(x, y);
         int currentAlive = (grid.getCoordinate(x, y)) ? 1 : 0;
         int aliveNeighbors = IntStream.of(neighborhood).sum() - currentAlive;
@@ -52,7 +61,9 @@ public class GameLogic {
     public void setRules(Rules rules) {
         this.rules = rules;
     }
-    
-    
-            
+
+    public Grid getGrid() {
+        return grid;
+    }
+           
 }

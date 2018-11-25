@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
 import cellularautomata.*;
 import static org.hamcrest.CoreMatchers.is;
@@ -13,8 +8,10 @@ import org.junit.Test;
 public class CellularAutomataTest {
     Grid grid;
     Grid grid2;
+    Grid grid3;
     GameLogic gl;
     GameLogic gl2;
+    GameLogic gl3;
     Rules r1;
     
     @Before
@@ -22,9 +19,14 @@ public class CellularAutomataTest {
         this.grid = new Grid(5,5);
         this.grid2 = new Grid(new boolean[][] {{false,true,false},
                                                 {false,true,false}}); 
+        this.grid3=new Grid(new boolean[][] {{false, true, true, false},
+                                             {false, true, false, false},
+                                             {false, true, false, false},
+                                             {false, true, false, false}});
         this.r1 = new GameOfLifeRules();
         this.gl = new GameLogic(grid, r1);
         this.gl2 = new GameLogic(grid2, r1);
+        this.gl3 = new GameLogic(grid3, r1);
     }
     
     
@@ -50,19 +52,18 @@ public class CellularAutomataTest {
     
     @Test
     public void constructorWithArrayCreatesArrayWithRightWidth() {
-        assertThat(grid2.getxSize(), is(2));
+        assertThat(grid2.getxSize(), is(3));
     }
     
     @Test
     public void constructorWithArrayCreatesArrayWithRightHeight() {
-        assertThat(grid2.getySize(), is(3));
+        assertThat(grid2.getySize(), is(2));
     }
     
     @Test
     public void constructorWithArrayCreatesRightValues() {
-        boolean[][] values = new boolean[][] {{false,true,false},   //  0   0
-                                                {false,true,false}};//  1   1
-                                                                    //  0   0
+        boolean[][] values = new boolean[][] {{false,true,false},   //  0   1   0
+                                                {false,true,false}};//  0   1   0
         assertThat(values, is(grid2.getStates()));
         
     }
@@ -76,6 +77,30 @@ public class CellularAutomataTest {
         assertThat(gl2.aliveNeighbors(1, 1),is(1));
     }
     
+    @Test
+    public void testIfOutOfBounds() {
+        assertThat(grid2.inBounds(0, 0),is(true));
+    }
+    
+    @Test
+    public void testIfOutOfBounds2() {
+        assertThat(grid2.inBounds(1, 2),is(true));
+    }
+    
+    @Test
+    public void testIfOutOfBounds3() {
+        assertThat(grid3.inBounds(4, 2),is(false));
+    }
+    
+    @Test
+    public void secondGenIsCorrect() {
+        gl3.iterate();
+        boolean[][] correct = new boolean[][] {{false, true, true, false},
+                                          {true, true, false, false},
+                                          {true, true, true,false},
+                                          {false, false, false, false}};
+        assertThat(gl3.getGrid().getStates(),is(correct));
+    }
     /*
     @AfterClass
     public static void tearDownClass() {

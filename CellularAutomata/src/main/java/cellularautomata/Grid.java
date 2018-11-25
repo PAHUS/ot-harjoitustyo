@@ -45,16 +45,29 @@ public class Grid {
     }
 
     public int getxSize() {
-        return xSize;
+        return states[0].length;
     }
 
     public int getySize() {
-        return ySize;
+        return states.length;
     }
     
 
     public boolean[][] getStates() {
         return states;
     }
+    
+    public boolean[][] copyStates() {
+        boolean[][] copy = new boolean[this.xSize][this.ySize];
+        for(int i =0; i<states.length; i++){
+            copy[i] = states[i].clone();
+        }
+        return copy;
+    }
+
+    public void setStates(boolean[][] states) {
+        this.states = states;
+    }
+    
     
 }
