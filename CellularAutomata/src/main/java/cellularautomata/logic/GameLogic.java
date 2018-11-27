@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package cellularautomata;
+package cellularautomata.logic;
 
+import cellularautomata.logic.rules.Rules;
 import java.util.stream.*;
 
 /**

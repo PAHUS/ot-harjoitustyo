@@ -1,5 +1,5 @@
 
-package cellularautomata;
+package cellularautomata.logic;
 
 import java.util.Arrays;
 

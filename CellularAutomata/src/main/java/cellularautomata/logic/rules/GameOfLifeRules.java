@@ -1,16 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package cellularautomata;
+package cellularautomata.logic.rules;
 
-/**
- *
- * @author tyivaana
- */
+import cellularautomata.logic.rules.Rules;
+
 public class GameOfLifeRules implements Rules {
-
     @Override
     public boolean nextState(boolean alive, int aliveNeighbors) {
         if(alive){

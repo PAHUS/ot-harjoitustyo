@@ -1,4 +1,8 @@
 
+import cellularautomata.logic.Grid;
+import cellularautomata.logic.GameLogic;
+import cellularautomata.logic.rules.Rules;
+import cellularautomata.logic.rules.GameOfLifeRules;
 import cellularautomata.*;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
