@@ -1,5 +1,5 @@
 
-package cellularautomata;
+package cellularautomata.gui;
 import cellularautomata.logic.GameLogic;
 import cellularautomata.logic.rules.GameOfLifeRules;
 import cellularautomata.logic.Grid;
@@ -10,7 +10,6 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 public class GUI extends Application{

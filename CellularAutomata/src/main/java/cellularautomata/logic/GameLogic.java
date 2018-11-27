@@ -13,6 +13,7 @@ import java.util.stream.*;
  * @author tyivaana
  */
 public class GameLogic {
+
     private Grid grid;
     private Rules rules;
 
@@ -21,21 +22,16 @@ public class GameLogic {
         this.rules = rules;
     }
 
-    
-    public void iterate(){
+    public void iterate() {
         boolean[][] nextGen = this.grid.copyStates();
-        for(int i= 0; i<grid.getxSize();i++){
-            for(int j=0; j<grid.getySize(); j++){ //iterate over the array and count next generation values
-                boolean nextState = rules.nextState(i,j,grid); //calculate next state
+        for (int i = 0; i < grid.getxSize(); i++) {
+            for (int j = 0; j < grid.getySize(); j++) { //iterate over the array and count next generation values
+                boolean nextState = rules.nextState(i, j, grid); //calculate next state
                 nextGen[i][j] = nextState; //SET NEXT STATE
             }
         }
         this.grid.setStates(nextGen); //Change the state of the Grid to next generation
     }
-    
-    
-    
-    
 
     public Rules getRules() {
         return rules;
@@ -48,5 +44,5 @@ public class GameLogic {
     public Grid getGrid() {
         return grid;
     }
-           
+
 }
