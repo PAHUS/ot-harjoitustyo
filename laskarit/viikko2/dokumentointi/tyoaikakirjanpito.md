@@ -8,5 +8,5 @@
 | 4 | 23.11.   | 2 | Completed application logic |
 | 4 | 25.11.   | 2 | fixed a bug |
 | 4 | 26.11.   | 2 | created GUI |
-| 4 | 27.11.   | 5 | refactored methods, reordered packages and made GUI work with the application logic |
-| total  | |22  | | 
+| 4 | 27.11.   | 6 | refactored methods, reordered packages and made GUI work with the application logic |
+| total  | |23  | | 
