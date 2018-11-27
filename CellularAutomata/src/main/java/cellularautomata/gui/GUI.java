@@ -62,7 +62,6 @@ public class GUI extends Application {
                 button.setOnAction((event) -> {
                     grid.switchState(rr, cc);
                     drawButton(rr, cc);
-                    System.out.println(rr + " " + cc);
                 });
 
                 button.setPrefSize(10, 10);
@@ -72,8 +71,8 @@ public class GUI extends Application {
         drawButtons();
         panel.setBottom(actions);
         panel.setCenter(graphics);
-        //graphics.setPrefHeight(700);
-        //graphics.setPrefWidth(700);
+        graphics.setPrefHeight(1000);
+        graphics.setPrefWidth(700);
         graphics.gridLinesVisibleProperty();
 
         Scene defaultScene = new Scene(panel); //Initializing default scene
