@@ -9,7 +9,7 @@ I have completed the application logic with Game of Life implementation. The app
 ### Running the program
 Run file from command line:
 ```
-mvn compile exec:java -Dexec.mainClass=cellularautomata.GUI
+mvn compile exec:java -Dexec.mainClass=cellularautomata.gui.GUI
 
 ```
 ### Testing
@@ -22,7 +22,11 @@ Test coverage:
 mvn jacoco:report
 ```
 Creates a test coverage report to _target/site/jacoco/index.html_ which can be opened in browser.
-
+Test checkstyle:
+```
+mvn jxr:jxr checkstyle:checkstyle
+```
+Creates a checkstyle report to _target/site/checkstyle.html_ which can be opened in browser.
 
 ## Documentation
 [Specification document](https://github.com/PAHUS/ot-harjoitustyo/blob/master/laskarit/viikko2/dokumentointi/alustavaMaarittely.md),
