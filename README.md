@@ -36,4 +36,5 @@ Creates a checkstyle report to _target/site/checkstyle.html_ which can be opened
 [Specification document](https://github.com/PAHUS/ot-harjoitustyo/blob/master/laskarit/viikko2/dokumentointi/alustavaMaarittely.md),
 
 [Work time bookkeeping](https://github.com/PAHUS/ot-harjoitustyo/blob/master/laskarit/viikko2/dokumentointi/tyoaikakirjanpito.md)
+[Class diagram]()
 
