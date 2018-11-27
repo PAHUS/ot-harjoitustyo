@@ -25,6 +25,7 @@ Test coverage:
 mvn jacoco:report
 ```
 Creates a test coverage report to _target/site/jacoco/index.html_ which can be opened in browser.
+
 Test checkstyle:
 ```
 mvn jxr:jxr checkstyle:checkstyle
