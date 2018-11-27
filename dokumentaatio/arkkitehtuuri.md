@@ -1,1 +1,1 @@
-![](https://github.com/PAHUS/ot-harjoitustyo/laskarit/viikko2/dokumentointi/umldiag.png)
+![](https://raw.githubusercontent.com/PAHUS/ot-harjoitustyo/master/laskarit/viikko2/dokumentointi/umldiag.png)
