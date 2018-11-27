@@ -9,7 +9,7 @@ I have completed the application logic with Game of Life implementation. The app
 ### Running the program
 Run file from command line:
 ```
-mvn compile exec:java -Dexec.mainClass=cellularautomata.Main
+mvn compile exec:java -Dexec.mainClass=cellularautomata.GUI
 
 ```
 ### Testing
