@@ -43,6 +43,10 @@ public class GUI extends Application{
         
         FlowPane actions = new FlowPane(); //Setting Buttons
         Button reset = new Button("Reset"); 
+        reset.setOnAction((event) -> {
+            initializeDefault();
+            drawButtons();
+        });
         Button next = new Button(">");
         next.setOnAction((event) -> {
             logic.iterate();
@@ -65,10 +69,8 @@ public class GUI extends Application{
                 final int rr = r;
                 final int cc = c;
                 button.setOnAction((event)-> {
-                    System.out.println(grid.getCoordinate(rr, cc));
                     grid.switchState(rr,cc);
                     drawButton(rr,cc);
-                    System.out.println(grid.getCoordinate(rr, cc));
                     System.out.println(rr + " " + cc);
                 });
                 
