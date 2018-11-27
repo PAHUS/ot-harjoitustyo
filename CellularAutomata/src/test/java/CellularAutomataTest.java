@@ -74,11 +74,11 @@ public class CellularAutomataTest {
     
     @Test
     public void countsNeighbors() {
-        assertThat(gl2.aliveNeighbors(0, 0),is(2));
+        assertThat(grid2.aliveNeighbors(0, 0),is(2));
     }
     @Test
     public void countsNeighbors2() {
-        assertThat(gl2.aliveNeighbors(1, 1),is(1));
+        assertThat(grid2.aliveNeighbors(1, 1),is(1));
     }
     
     @Test

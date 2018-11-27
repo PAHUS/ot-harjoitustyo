@@ -22,7 +22,7 @@ public class GUI extends Application{
     private GameLogic logic;
     private Rules rules;
     private Grid grid;
-   
+    private Button[][] buttons;
 
     @Override
     public void init() throws Exception {
@@ -44,6 +44,10 @@ public class GUI extends Application{
         FlowPane actions = new FlowPane(); //Setting Buttons
         Button reset = new Button("Reset"); 
         Button next = new Button(">");
+        next.setOnAction((event) -> {
+            logic.iterate();
+            drawButtons();
+        });
         Button start = new Button("Start");
         actions.setHgap(3);
         actions.setVgap(5);
@@ -53,15 +57,26 @@ public class GUI extends Application{
         
         GridPane graphics = new GridPane(); //Making the grid
         //graphics.setGridLinesVisible(true);
+        buttons = new Button[grid.getxSize()][grid.getySize()]; //wip
         for (int r = 0; r < grid.getxSize(); r++) {
             for (int c = 0; c < grid.getySize(); c++) {
                 Button button = new Button();
-                button.autosize();
-                //button.setBackground(new Background(new BackgroundFill(Color.WHEAT, CornerRadii.EMPTY, Insets.EMPTY)));
-                //button.setPrefSize(20,20);
+                buttons[r][c] = button;
+                final int rr = r;
+                final int cc = c;
+                button.setOnAction((event)-> {
+                    System.out.println(grid.getCoordinate(rr, cc));
+                    grid.switchState(rr,cc);
+                    drawButton(rr,cc);
+                    System.out.println(grid.getCoordinate(rr, cc));
+                    System.out.println(rr + " " + cc);
+                });
+                
+                button.setPrefSize(10,10);
                 graphics.add(button, c, r);
             }
-    }
+        }
+        drawButtons();
         panel.setBottom(actions);
         panel.setCenter(graphics);
         //graphics.setPrefHeight(700);
@@ -79,8 +94,23 @@ public class GUI extends Application{
         launch(GUI.class);
     }
     
+    public void drawButtons(){
+        for (int r = 0; r < grid.getxSize(); r++) {
+            for (int c = 0; c < grid.getySize(); c++) {
+                drawButton(r,c);
+            }
+        }
+    }
+    
+    public void drawButton(int x, int y){
+        boolean alive = grid.getCoordinate(x, y);
+        Button button = buttons[x][y];
+        String style = (alive) ? "-fx-base: CadetBlue;" : "-fx-base: LightGoldenRodYellow;";
+        button.setStyle(style);
+    }
+    
     public void initializeDefault(){
-        this.grid = new Grid(10,10);
+        this.grid = new Grid(30,30);
         this.rules = new GameOfLifeRules();
         this.logic = new GameLogic(grid, rules);
         

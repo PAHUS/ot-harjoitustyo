@@ -1,10 +1,13 @@
 package cellularautomata.logic.rules;
 
-import cellularautomata.logic.rules.Rules;
+import cellularautomata.logic.Grid;
 
 public class GameOfLifeRules implements Rules {
+    
     @Override
-    public boolean nextState(boolean alive, int aliveNeighbors) {
+    public boolean nextState(int x, int y, Grid grid) {
+        boolean alive = grid.getCoordinate(x, y);
+        int aliveNeighbors = grid.aliveNeighbors(x, y);
         if(alive){
             if(aliveNeighbors == 2 || aliveNeighbors == 3){ //if alive and 2 or 3 alive neighbors stay alive
                 return true;

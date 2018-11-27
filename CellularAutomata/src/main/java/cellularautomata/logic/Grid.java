@@ -2,6 +2,7 @@
 package cellularautomata.logic;
 
 import java.util.Arrays;
+import java.util.stream.IntStream;
 
 public class Grid {
     private int xSize;
@@ -40,6 +41,25 @@ public class Grid {
         return false;
     }
     
+    public int aliveNeighbors(int x, int y){
+        int[] neighborhood = this.getNeighborhood(x, y);
+        int currentAlive = (getCoordinate(x, y)) ? 1 : 0;
+        int aliveNeighbors = IntStream.of(neighborhood).sum() - currentAlive;
+        return aliveNeighbors;
+    }
+    
+    public int[] getNeighborhood(int x, int y){
+        int[] neighborhood = new int[9];
+        int index = 0;
+        for(int i = x-1; i<=x+1; i++){
+            for(int j = y-1; j<=y+1; j++){
+                neighborhood[index]= (getCoordinate(i,j)) ? 1 : 0; // ternary map from boolean to int
+                index++;
+            }
+        }
+        return neighborhood;
+    }
+    
     public int size() {
         return this.states.length * this.states[0].length;
     }
@@ -67,7 +87,17 @@ public class Grid {
 
     public void setStates(boolean[][] states) {
         this.states = states;
+        this.xSize = states[0].length;
+        
     }
     
+    public void setState(int x, int y, boolean state){
+        states[x][y] = state;
+    }
+    
+    public void switchState(int x, int y){
+        boolean current = states[x][y];
+        setState(x, y, !current);
+    }
     
 }
