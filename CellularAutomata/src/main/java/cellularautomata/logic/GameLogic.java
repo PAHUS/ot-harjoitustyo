@@ -6,7 +6,6 @@
 package cellularautomata.logic;
 
 import cellularautomata.logic.rules.Rules;
-import java.util.stream.*;
 
 /**
  *

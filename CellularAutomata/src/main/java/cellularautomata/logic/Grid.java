@@ -64,11 +64,11 @@ public class Grid {
     }
 
     public int getxSize() {
-        return states[0].length;
+        return xSize;
     }
 
     public int getySize() {
-        return states.length;
+        return ySize;
     }
 
     public boolean[][] getStates() {
@@ -85,8 +85,8 @@ public class Grid {
 
     public void setStates(boolean[][] states) {
         this.states = states;
-        this.xSize = states[0].length;
-
+        xSize = states.length;
+        ySize = states[0].length;
     }
 
     public void setState(int x, int y, boolean state) {

@@ -4,6 +4,8 @@ import cellularautomata.logic.GameLogic;
 import cellularautomata.logic.rules.GameOfLifeRules;
 import cellularautomata.logic.Grid;
 import cellularautomata.logic.rules.Rules;
+import java.awt.GraphicsDevice;
+import java.awt.GraphicsEnvironment;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -31,6 +33,8 @@ public class GUI extends Application {
         window.centerOnScreen();
 
         BorderPane panel = new BorderPane();
+        Scene defaultScene = new Scene(panel); //Initializing default scene
+        defaultScene.getStylesheets().add("StyleSheet.css");
 
         FlowPane actions = new FlowPane(); //Setting Buttons
         Button reset = new Button("Reset");
@@ -53,29 +57,30 @@ public class GUI extends Application {
         GridPane graphics = new GridPane(); //Making the grid
         //graphics.setGridLinesVisible(true);
         buttons = new Button[grid.getxSize()][grid.getySize()]; //wip
-        for (int r = 0; r < grid.getxSize(); r++) {
-            for (int c = 0; c < grid.getySize(); c++) {
+        for (int x = 0; x < grid.getxSize(); x++) {
+            for (int y = 0; y < grid.getySize(); y++) {
                 Button button = new Button();
-                buttons[r][c] = button;
-                final int rr = r;
-                final int cc = c;
+                buttons[x][y] = button;
+                final int xx = x;
+                final int yy = y;
                 button.setOnAction((event) -> {
-                    grid.switchState(rr, cc);
-                    drawButton(rr, cc);
+                    grid.switchState(xx, yy);
+                    drawButton(xx, yy);
                 });
-
-                button.setPrefSize(10, 10);
-                graphics.add(button, c, r);
+                graphics.add(button, x, y);
             }
         }
         drawButtons();
         panel.setBottom(actions);
         panel.setCenter(graphics);
-        graphics.setPrefHeight(1000);
-        graphics.setPrefWidth(700);
+        GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
+        int width = gd.getDisplayMode().getWidth();
+        int height = gd.getDisplayMode().getHeight();
+        graphics.setPrefHeight(height/2);
+        graphics.setPrefWidth(width/2);
         graphics.gridLinesVisibleProperty();
 
-        Scene defaultScene = new Scene(panel); //Initializing default scene
+        
         window.setScene(defaultScene);
         window.show();
 
@@ -86,9 +91,9 @@ public class GUI extends Application {
     }
 
     public void drawButtons() {
-        for (int r = 0; r < grid.getxSize(); r++) {
-            for (int c = 0; c < grid.getySize(); c++) {
-                drawButton(r, c);
+        for (int x = 0; x < grid.getxSize(); x++) {
+            for (int y = 0; y < grid.getySize(); y++) {
+                drawButton(x, y);
             }
         }
     }
@@ -96,12 +101,12 @@ public class GUI extends Application {
     public void drawButton(int x, int y) {
         boolean alive = grid.getCoordinate(x, y);
         Button button = buttons[x][y];
-        String style = (alive) ? "-fx-base: CadetBlue;" : "-fx-base: LightGoldenRodYellow;";
+        String style = (alive) ? "-fx-base: CadetBlue; -fx-background-radius: 0em;" : "-fx-base: LightGoldenRodYellow; -fx-background-radius: 0em;";
         button.setStyle(style);
     }
 
     public void initializeDefault() {
-        this.grid = new Grid(30, 30);
+        this.grid = new Grid(100, 25);
         this.rules = new GameOfLifeRules();
         this.logic = new GameLogic(grid, rules);
 
