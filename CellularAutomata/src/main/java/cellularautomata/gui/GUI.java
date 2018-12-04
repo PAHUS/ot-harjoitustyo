@@ -6,7 +6,7 @@ import cellularautomata.logic.Grid;
 import cellularautomata.logic.rules.Rules;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
-import java.net.URL;
+import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -33,6 +33,19 @@ public class GUI extends Application {
         window.setTitle("Cellular Automaton"); //Setup of stage settings
         window.centerOnScreen();
 
+        AnimationTimer timer = new AnimationTimer() {
+            long prev = 0;
+            @Override
+            public void handle(long current) {
+//                System.out.println(current);
+//                if (current - prev < 1) {
+//                    return;
+//                }
+                logic.iterate();
+                drawButtons();
+//                this.prev = current;
+            }
+        };
         BorderPane panel = new BorderPane();
         Scene defaultScene = new Scene(panel); //Initializing default scene
         
@@ -47,15 +60,32 @@ public class GUI extends Application {
         FlowPane actions = new FlowPane(); //Setting Buttons
         Button reset = new Button("Reset");
         reset.setOnAction((event) -> {
+            timer.stop();
             resetGrid();
             drawButtons();
         });
         Button next = new Button(">");
         next.setOnAction((event) -> {
+            timer.stop();
             logic.iterate();
             drawButtons();
         });
+        
+        
         Button start = new Button("Start");
+        boolean on = false;
+        start.setOnAction((event) -> {
+            String text = start.getText();
+            if(text.equals("Start")){
+                timer.start();
+                start.setText("Stop");
+            }
+            else{
+                timer.stop();
+                start.setText("Start");
+            }
+        });
+        
         actions.setHgap(3);
         actions.setVgap(5);
         actions.getChildren().add(reset);
@@ -66,18 +96,24 @@ public class GUI extends Application {
         FlowPane sizeSet = new FlowPane(); //Setting Size buttons
         Button small = new Button("Small");
         small.setOnAction((event) -> {
-            initializeGrid(40,20);
+            timer.stop();
+            initializeGrid(40,30);
             start(window);
+            window.centerOnScreen();
         });
         Button medium = new Button("Medium");
         medium.setOnAction((event) -> {
-            initializeGrid(60,30);
+            timer.stop();
+            initializeGrid(60,40);
             start(window);
+            window.centerOnScreen();
         });
         Button large = new Button("Large");
         large.setOnAction((event) -> {
-            initializeGrid(100,40);
+            timer.stop();
+            initializeGrid(100,50);
             start(window);
+            window.centerOnScreen();
         });
         sizeSet.setHgap(3);
         sizeSet.setVgap(5);
@@ -158,4 +194,5 @@ public class GUI extends Application {
         initializeGrid(width, height);
     }
 
+   
 }
