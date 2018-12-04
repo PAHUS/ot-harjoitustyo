@@ -36,14 +36,13 @@ public class GUI extends Application {
         BorderPane panel = new BorderPane();
         Scene defaultScene = new Scene(panel); //Initializing default scene
         
-//        
-//        URL url = getClass().getResource("styleSheet.css");
+        String css = getClass().getResource("/styleSheet.css").toExternalForm();
 //        if(url == null){
 //            System.out.println("Styles not found. Abort");
 //            System.exit(-1);
 //        }
 //        String css = url.toExternalForm();
-//        defaultScene.getStylesheets().add(css);
+        defaultScene.getStylesheets().add(css);
 
         FlowPane actions = new FlowPane(); //Setting Buttons
         Button reset = new Button("Reset");
@@ -69,6 +68,7 @@ public class GUI extends Application {
         for (int x = 0; x < grid.getHeight(); x++) {
             for (int y = 0; y < grid.getWidth(); y++) {
                 Button button = new Button();
+                button.getStyleClass().add("tile");
                 buttons[x][y] = button;
                 button.setMinSize(15, 15);
                 button.setMaxSize(15, 15);
@@ -112,8 +112,12 @@ public class GUI extends Application {
     public void drawButton(int x, int y) {
         boolean alive = grid.getCoordinate(x, y);
         Button button = buttons[x][y];
-        String style = (alive) ? "-fx-base: CadetBlue; -fx-background-radius: 0em;" : "-fx-base: LightGoldenRodYellow; -fx-background-radius: 0em;";
-        button.setStyle(style);
+        //String style = (alive) ? "-fx-base: CadetBlue; -fx-background-radius: 0em;" : "-fx-base: LightGoldenRodYellow; -fx-background-radius: 0em;";
+        String style = (alive) ? "tile-alive" : "tile-dead";
+        //button.setStyle(style);
+        button.getStyleClass().removeAll("tile-alive", "tile-dead");
+        button.getStyleClass().add(style);
+        
     }
 
     public void initializeDefault() {
