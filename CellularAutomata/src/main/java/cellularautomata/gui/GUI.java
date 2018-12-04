@@ -6,6 +6,7 @@ import cellularautomata.logic.Grid;
 import cellularautomata.logic.rules.Rules;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
+import java.net.URL;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -34,7 +35,15 @@ public class GUI extends Application {
 
         BorderPane panel = new BorderPane();
         Scene defaultScene = new Scene(panel); //Initializing default scene
-        defaultScene.getStylesheets().add("StyleSheet.css");
+        
+//        
+//        URL url = getClass().getResource("styleSheet.css");
+//        if(url == null){
+//            System.out.println("Styles not found. Abort");
+//            System.exit(-1);
+//        }
+//        String css = url.toExternalForm();
+//        defaultScene.getStylesheets().add(css);
 
         FlowPane actions = new FlowPane(); //Setting Buttons
         Button reset = new Button("Reset");
@@ -56,11 +65,13 @@ public class GUI extends Application {
 
         GridPane graphics = new GridPane(); //Making the grid
         //graphics.setGridLinesVisible(true);
-        buttons = new Button[grid.getxSize()][grid.getySize()]; //wip
-        for (int x = 0; x < grid.getxSize(); x++) {
-            for (int y = 0; y < grid.getySize(); y++) {
+        buttons = new Button[grid.getHeight()][grid.getWidth()]; //wip
+        for (int x = 0; x < grid.getHeight(); x++) {
+            for (int y = 0; y < grid.getWidth(); y++) {
                 Button button = new Button();
                 buttons[x][y] = button;
+                button.setMinSize(15, 15);
+                button.setMaxSize(15, 15);
                 final int xx = x;
                 final int yy = y;
                 button.setOnAction((event) -> {
@@ -91,8 +102,8 @@ public class GUI extends Application {
     }
 
     public void drawButtons() {
-        for (int x = 0; x < grid.getxSize(); x++) {
-            for (int y = 0; y < grid.getySize(); y++) {
+        for (int x = 0; x < grid.getHeight(); x++) {
+            for (int y = 0; y < grid.getWidth(); y++) {
                 drawButton(x, y);
             }
         }
@@ -106,7 +117,7 @@ public class GUI extends Application {
     }
 
     public void initializeDefault() {
-        this.grid = new Grid(100, 25);
+        this.grid = new Grid(100, 40);
         this.rules = new GameOfLifeRules();
         this.logic = new GameLogic(grid, rules);
 

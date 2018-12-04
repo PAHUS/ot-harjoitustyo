@@ -63,11 +63,11 @@ public class Grid {
         return this.states.length * this.states[0].length;
     }
 
-    public int getxSize() {
+    public int getHeight() {
         return xSize;
     }
 
-    public int getySize() {
+    public int getWidth() {
         return ySize;
     }
 

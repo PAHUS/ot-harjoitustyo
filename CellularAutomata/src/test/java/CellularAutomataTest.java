@@ -55,12 +55,12 @@ public class CellularAutomataTest {
 
     @Test
     public void constructorWithArrayCreatesArrayWithRightWidth() {
-        assertThat(grid2.getxSize(), is(3));
+        assertThat(grid2.getWidth(), is(3));
     }
 
     @Test
     public void constructorWithArrayCreatesArrayWithRightHeight() {
-        assertThat(grid2.getySize(), is(2));
+        assertThat(grid2.getHeight(), is(2));
     }
 
     @Test
