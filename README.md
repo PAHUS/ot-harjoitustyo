@@ -2,7 +2,7 @@
 This application is a cellular automata implementation with a graphical user interface. It currently supports the ruleset of **Conway's Game of Life**, but it will support other rulesets in the future.
 
 ## Releases
-### [Week 5]()
+### [Week 5](https://github.com/PAHUS/ot-harjoitustyo/releases/tag/viikko5)
 
 
 ## Command line commands
