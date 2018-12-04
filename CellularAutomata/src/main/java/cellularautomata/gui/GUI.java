@@ -62,7 +62,7 @@ public class GUI extends Application {
         reset.setOnAction((event) -> {
             timer.stop();
             resetGrid();
-            drawButtons();
+            start(window);
         });
         Button next = new Button(">");
         next.setOnAction((event) -> {
@@ -191,7 +191,7 @@ public class GUI extends Application {
     public void resetGrid(){
         int width = grid.getWidth();
         int height = grid.getHeight();
-        initializeGrid(width, height);
+        initializeGrid(height, width);
     }
 
    
