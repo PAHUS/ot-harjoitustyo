@@ -8,7 +8,9 @@
 	-fx-max-width:   15px;
 	
 	/* prevent rounded buttons */
-	-fx-background-radius: 0em;
+        -fx-background-radius: 0em;
+    
+        
 }
 
 .tile-alive{
@@ -16,4 +18,8 @@
 }
 .tile-dead{
     -fx-base: LightGoldenRodYellow; 
+}
+
+.tile-round{
+    -fx-background-radius: 0 0 0 0,15,15;
 }

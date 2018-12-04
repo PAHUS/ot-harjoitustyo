@@ -24,7 +24,7 @@ public class GUI extends Application {
 
     @Override
     public void init() throws Exception {
-        initializeDefault();
+        initializeGrid(100, 50);
 
     }
 
@@ -47,7 +47,7 @@ public class GUI extends Application {
         FlowPane actions = new FlowPane(); //Setting Buttons
         Button reset = new Button("Reset");
         reset.setOnAction((event) -> {
-            initializeDefault();
+            resetGrid();
             drawButtons();
         });
         Button next = new Button(">");
@@ -61,6 +61,31 @@ public class GUI extends Application {
         actions.getChildren().add(reset);
         actions.getChildren().add(next);
         actions.getChildren().add(start);
+        panel.setBottom(actions);
+        
+        FlowPane sizeSet = new FlowPane(); //Setting Size buttons
+        Button small = new Button("Small");
+        small.setOnAction((event) -> {
+            initializeGrid(40,20);
+            start(window);
+        });
+        Button medium = new Button("Medium");
+        medium.setOnAction((event) -> {
+            initializeGrid(60,30);
+            start(window);
+        });
+        Button large = new Button("Large");
+        large.setOnAction((event) -> {
+            initializeGrid(100,40);
+            start(window);
+        });
+        sizeSet.setHgap(3);
+        sizeSet.setVgap(5);
+        sizeSet.getChildren().add(small);
+        sizeSet.getChildren().add(medium);
+        sizeSet.getChildren().add(large);
+        panel.setTop(sizeSet);
+        
 
         GridPane graphics = new GridPane(); //Making the grid
         //graphics.setGridLinesVisible(true);
@@ -82,7 +107,7 @@ public class GUI extends Application {
             }
         }
         drawButtons();
-        panel.setBottom(actions);
+        
         panel.setCenter(graphics);
         GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
         int width = gd.getDisplayMode().getWidth();
@@ -120,11 +145,17 @@ public class GUI extends Application {
         
     }
 
-    public void initializeDefault() {
-        this.grid = new Grid(100, 40);
+    public void initializeGrid(int width, int height) {
+        this.grid = new Grid(width, height);
         this.rules = new GameOfLifeRules();
         this.logic = new GameLogic(grid, rules);
 
+    }
+    
+    public void resetGrid(){
+        int width = grid.getWidth();
+        int height = grid.getHeight();
+        initializeGrid(width, height);
     }
 
 }
