@@ -15,6 +15,12 @@ Run file from command line:
 mvn compile exec:java -Dexec.mainClass=cellularautomata.gui.GUI
 
 ```
+Create JAR file:
+```
+mvn package
+```
+which you can run with "java -jar CellularAutomata-1.0-SNAPSHOT.jar" at the _/target_ directory
+
 ### Testing
 Test with maven:
 ```
