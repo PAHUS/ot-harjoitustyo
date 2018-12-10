@@ -4,12 +4,15 @@ import cellularautomata.logic.GameLogic;
 import cellularautomata.logic.rules.GameOfLifeRules;
 import cellularautomata.logic.Grid;
 import cellularautomata.logic.rules.Rules;
+import java.awt.Dimension;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
+import java.awt.Toolkit;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
@@ -21,10 +24,12 @@ public class GUI extends Application {
     private Rules rules;
     private Grid grid;
     private Button[][] buttons;
+    private boolean darkmode;
 
     @Override
     public void init() throws Exception {
         initializeGrid(100, 50);
+        darkmode = false;
 
     }
 
@@ -50,11 +55,6 @@ public class GUI extends Application {
         Scene defaultScene = new Scene(panel); //Initializing default scene
         
         String css = getClass().getResource("/styleSheet.css").toExternalForm();
-//        if(url == null){
-//            System.out.println("Styles not found. Abort");
-//            System.exit(-1);
-//        }
-//        String css = url.toExternalForm();
         defaultScene.getStylesheets().add(css);
 
         FlowPane actions = new FlowPane(); //Setting Buttons
@@ -115,15 +115,25 @@ public class GUI extends Application {
             start(window);
             window.centerOnScreen();
         });
+        Button invert = new Button("Invert Colors");
+        invert.setOnAction((event) -> {
+            darkmode = !darkmode;
+            drawButtons();
+        });
         sizeSet.setHgap(3);
         sizeSet.setVgap(5);
         sizeSet.getChildren().add(small);
         sizeSet.getChildren().add(medium);
         sizeSet.getChildren().add(large);
+        sizeSet.getChildren().add(invert);
         panel.setTop(sizeSet);
+        
+        ScrollPane scrollable = new ScrollPane(); //Making a scrollpane into which embed the GridPane
+        scrollable.setPrefSize(getScreenWidth(), getScreenHeight());
         
 
         GridPane graphics = new GridPane(); //Making the grid
+        graphics.isResizable();
         //graphics.setGridLinesVisible(true);
         buttons = new Button[grid.getHeight()][grid.getWidth()]; //wip
         for (int x = 0; x < grid.getHeight(); x++) {
@@ -144,7 +154,8 @@ public class GUI extends Application {
         }
         drawButtons();
         
-        panel.setCenter(graphics);
+        scrollable.setContent(graphics);
+        panel.setCenter(scrollable);
         GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
         int width = gd.getDisplayMode().getWidth();
         int height = gd.getDisplayMode().getHeight();
@@ -173,12 +184,33 @@ public class GUI extends Application {
     public void drawButton(int x, int y) {
         boolean alive = grid.getCoordinate(x, y);
         Button button = buttons[x][y];
-        //String style = (alive) ? "-fx-base: CadetBlue; -fx-background-radius: 0em;" : "-fx-base: LightGoldenRodYellow; -fx-background-radius: 0em;";
-        String style = (alive) ? "tile-alive" : "tile-dead";
-        //button.setStyle(style);
-        button.getStyleClass().removeAll("tile-alive", "tile-dead");
-        button.getStyleClass().add(style);
+        String style = "";
+        if(!darkmode){
+            style = (alive) ? "-fx-base: CadetBlue; -fx-background-radius: 0em;" : "-fx-base: LightGoldenRodYellow; -fx-background-radius: 0em;";
+        } else {
+            style = (!alive) ? "-fx-base: CadetBlue; -fx-background-radius: 0em;" : "-fx-base: LightGoldenRodYellow; -fx-background-radius: 0em;";
+        }
         
+        button.setStyle(style);
+        //        String style = "";
+//        if(!darkmode){
+//            style = (alive) ? "tile-alive" : "tile-dead";
+//        } else{
+//            style = (!alive) ? "tile-alive" : "tile-dead";
+//        }
+//        button.getStyleClass().removeAll("tile-alive", "tile-dead");
+//        button.getStyleClass().add(style);
+        
+    }
+    
+    public double getScreenWidth(){
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        return screenSize.getWidth();
+    }
+    
+    public double getScreenHeight(){
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        return screenSize.getHeight();
     }
 
     public void initializeGrid(int width, int height) {
