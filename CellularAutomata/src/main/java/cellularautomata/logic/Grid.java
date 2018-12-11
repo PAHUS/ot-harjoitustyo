@@ -15,9 +15,9 @@ public class Grid {
 
         this.states = new boolean[x][y];
         //Arrays.fill(states, false);
-        for (boolean[] row : states) {
-            Arrays.fill(row, false);
-        }
+//        for (boolean[] row : states) {
+//            Arrays.fill(row, false);
+//        }
     }
 
     public Grid(boolean[][] states) {

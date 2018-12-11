@@ -28,8 +28,6 @@ public class GUI extends Application {
     private Grid grid;
     private Button[][] buttons;
     private boolean darkmode;
-    private String aliveCell;
-    private String deadCell;
     private GridDao dao;
 
     @Override
@@ -43,10 +41,10 @@ public class GUI extends Application {
     @Override
     public void start(Stage window) {
         
-        window.setTitle("Cellular Automaton"); //Setup of stage settings
+        window.setTitle("Cellular Automaton"); // Setup of stage settings
         window.centerOnScreen();
 
-        AnimationTimer timer = new AnimationTimer() {
+        AnimationTimer timer = new AnimationTimer() { // Initializing Animation timer
             long prev = 0;
             @Override
             public void handle(long current) {
@@ -60,12 +58,12 @@ public class GUI extends Application {
             }
         };
         BorderPane panel = new BorderPane();
-        Scene defaultScene = new Scene(panel); //Initializing default scene
+        Scene defaultScene = new Scene(panel); // Initializing default scene
         
         String css = getClass().getResource("/styleSheet.css").toExternalForm();
         defaultScene.getStylesheets().add(css);
 
-        FlowPane actions = new FlowPane(); //Setting Buttons
+        FlowPane actions = new FlowPane(); // Setting Buttons
         Button reset = new Button("Reset");
         reset.setOnAction((event) -> {
             timer.stop();
@@ -131,12 +129,27 @@ public class GUI extends Application {
         Button save = new Button("Save"); //Move to different panel
         save.setOnAction((event) -> {
             try {
-                dao.saveGrid("test", grid); 
+                dao.saveGrid("example", grid); 
                 
             } catch (IOException exp) {
-                exp.printStackTrace(); //TODO
+                //exp.printStackTrace(); //TODO
             } 
             
+        });
+        
+        Button load = new Button("Load");
+        load.setOnAction((event) -> {
+            timer.stop();
+            try{
+                Grid grid = dao.loadGrid("example");
+                initializeGrid(grid.getWidth(), grid.getHeight());
+                this.grid = grid;
+                this.logic = new GameLogic(grid, rules);
+                start(window);
+                window.centerOnScreen();
+            } catch (IOException exp) {
+                //exp.printStackTrace();
+            }
         });
         
         sizeSet.setHgap(3);
@@ -147,11 +160,12 @@ public class GUI extends Application {
         
         sizeSet.getChildren().add(invert);
         sizeSet.getChildren().add(save);
+        sizeSet.getChildren().add(load);
         
         panel.setTop(sizeSet);
         
         ScrollPane scrollable = new ScrollPane(); //Making a scrollpane into which embed the GridPane
-        scrollable.setPrefSize(getScreenWidth(), getScreenHeight());
+        
         
 
         GridPane graphics = new GridPane(); //Making the grid
@@ -179,14 +193,10 @@ public class GUI extends Application {
         scrollable.setContent(graphics);
         panel.setCenter(scrollable);
         
-        GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
-        int width = gd.getDisplayMode().getWidth();
-        int height = gd.getDisplayMode().getHeight();
-        graphics.setPrefHeight(height/2);
-        graphics.setPrefWidth(width/2);
-        graphics.gridLinesVisibleProperty();
-
         
+
+        window.setMaxHeight(getScreenHeight());
+        window.setMaxWidth(getScreenWidth());
         window.setScene(defaultScene);
         window.show();
 
@@ -196,11 +206,7 @@ public class GUI extends Application {
         launch(GUI.class);
     }
 
-//    public void getStyles(){
-//        aliveCell = "tile-alive";
-//        deadCell = "tile-dead";
-//    }
-    public void drawButtons() {
+    private void drawButtons() {
         for (int x = 0; x < grid.getWidth(); x++) {
             for (int y = 0; y < grid.getHeight(); y++) {
                 drawButton(x, y);
@@ -208,7 +214,7 @@ public class GUI extends Application {
         }
     }
 
-    public void drawButton(int x, int y) {
+    private void drawButton(int x, int y) {
         boolean alive = grid.getCoordinate(x, y);
         Button button = buttons[x][y];
         String style;
@@ -230,27 +236,27 @@ public class GUI extends Application {
         
     }
     
-    public double getScreenWidth(){
+    private double getScreenWidth(){
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         return screenSize.getWidth();
     }
     
-    public double getScreenHeight(){
+    private double getScreenHeight(){
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         return screenSize.getHeight();
     }
 
-    public void initializeGrid(int width, int height) {
+    private void initializeGrid(int width, int height) {
         this.grid = new Grid(width, height);
         this.rules = new GameOfLifeRules();
         this.logic = new GameLogic(grid, rules);
 
     }
     
-    public void resetGrid(){
-        int width = grid.getHeight();
-        int height = grid.getWidth();
-        initializeGrid(height, width);
+    private void resetGrid(){
+        int height = grid.getHeight();
+        int width = grid.getWidth();
+        initializeGrid(width, height);
     }
 
    

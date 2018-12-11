@@ -32,7 +32,7 @@ public class FileGridDao implements GridDao{
     }
 
     @Override
-    public Grid findGrid(String name) throws IOException, FileNotFoundException {
+    public Grid loadGrid(String name) throws IOException, FileNotFoundException {
         File fileName = new File(name + ".csv");
         try(Scanner scanner = new Scanner(fileName)){
             return fromString(scanner);
@@ -50,12 +50,11 @@ public class FileGridDao implements GridDao{
         boolean[][] states = grid.getStates();
         lines.add(grid.getWidth() + ";" + grid.getHeight());
 
-        for(int y = 0; y< grid.getWidth(); y++){
-            for(int x = 0; x<grid.getHeight(); x++){
-                System.out.println(y);
+        for(int x = 0; x< grid.getHeight(); x++){
+            for(int y = 0; y<grid.getWidth(); y++){
                 System.out.println(x);
+                System.out.println(y);
                 if(states[y][x]){
-                    
                     lines.add(y + ";" + x);
                 }
             }
