@@ -3,6 +3,7 @@ package cellularautomata.dao;
 
 import cellularautomata.logic.Grid;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -31,9 +32,11 @@ public class FileGridDao implements GridDao{
     }
 
     @Override
-    public Grid findGrid(String filename) throws IOException {
-        Path path = Paths.get(filename + ".csv");
-        File file = (File) Files.lines(path);
+    public Grid findGrid(String name) throws IOException, FileNotFoundException {
+        File fileName = new File(name + ".csv");
+        try(Scanner scanner = new Scanner(fileName)){
+            return fromString(scanner);
+        }
         
     }
     
@@ -60,7 +63,7 @@ public class FileGridDao implements GridDao{
         return lines;
     }
     
-    private Grid fromString(Scanner scanner){
+    private Grid fromString(Scanner scanner) {
         boolean[][] states;
         
         String dimensions = scanner.next(); // reads dimensions and intitializes a dead Grid
@@ -78,5 +81,7 @@ public class FileGridDao implements GridDao{
         
         return grid;
     }
+    
+    
     
 }
