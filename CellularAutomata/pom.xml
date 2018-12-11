@@ -27,7 +27,7 @@
                 <version>0.8.0</version>
                 <configuration>
                     <excludes>
-                        <exclude>cellularautomata/*</exclude>
+                        <exclude>cellularautomata/gui/*</exclude>
                     </excludes>
                 </configuration>   
                 <executions>
