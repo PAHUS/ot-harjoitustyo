@@ -2,7 +2,7 @@
 
 ## Rakenne
 Ohjelma koostuu graafisesta käyttöliittymästä (_cellularautomata.gui_), sovelluslogiikasta(_cellularautomata.logic_ ja _cellularautomata.logic.rules_) ja dao-logiikasta (_cellularautomata.dao_), joka käsittelee tiedon tallettamista ja lukemista tiedostoista. Seuraavana on luokkakaavio sovelluslogiikkaluokista:
-<img src="https://raw.githubusercontent.com/PAHUS/ot-harjoitustyo/master/laskarit/viikko2/dokumentointi/umldiag.png" width="400">
+<img src="https://raw.githubusercontent.com/PAHUS/ot-harjoitustyo/master/laskarit/viikko2/dokumentointi/umldiag.png" width="200">
 
 ## Käyttöliittymä
 
