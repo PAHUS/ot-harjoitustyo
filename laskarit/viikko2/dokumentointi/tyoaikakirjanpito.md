@@ -10,5 +10,8 @@
 | 4 | 26.11.   | 2 | created GUI |
 | 4 | 27.11.   | 6 | refactored methods, reordered packages and made GUI work with the application logic |
 | 5 | 03.12.   | 3 | working out some bugs |
-| 5 | 04.12.   | 8 | some more bugs, styling with CSS added, added animation timer and screen size andjustment buttons, sequence diagram FIRST RELEASE  |
-| total  | |34  | | 
+| 5 | 04.12.   | 8 | some more bugs, styling with CSS added, added animation timer and screen size andjustment buttons, sequence diagram 
+FIRST RELEASE  |
+| 6 | 10.12.   | 2 | Created ScrollPane and edited layout |
+| 6 | 11.12.   | 11 | Made DAO to read and write files to and from Grid-objects  |
+| total  | |47  | | 
