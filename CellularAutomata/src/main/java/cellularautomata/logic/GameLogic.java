@@ -23,8 +23,8 @@ public class GameLogic {
 
     public void iterate() {
         boolean[][] nextGen = this.grid.copyStates();
-        for (int i = 0; i < grid.getHeight(); i++) {
-            for (int j = 0; j < grid.getWidth(); j++) { //iterate over the array and count next generation values
+        for (int i = 0; i < grid.getWidth(); i++) {
+            for (int j = 0; j < grid.getHeight(); j++) { //iterate over the array and count next generation values
                 boolean nextState = rules.nextState(i, j, grid); //calculate next state
                 nextGen[i][j] = nextState; //SET NEXT STATE
             }

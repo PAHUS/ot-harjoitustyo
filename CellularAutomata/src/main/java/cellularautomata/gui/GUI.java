@@ -1,5 +1,7 @@
 package cellularautomata.gui;
 
+import cellularautomata.dao.FileGridDao;
+import cellularautomata.dao.GridDao;
 import cellularautomata.logic.GameLogic;
 import cellularautomata.logic.rules.GameOfLifeRules;
 import cellularautomata.logic.Grid;
@@ -8,6 +10,7 @@ import java.awt.Dimension;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
 import java.awt.Toolkit;
+import java.io.IOException;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -25,10 +28,14 @@ public class GUI extends Application {
     private Grid grid;
     private Button[][] buttons;
     private boolean darkmode;
+    private String aliveCell;
+    private String deadCell;
+    private GridDao dao;
 
     @Override
     public void init() throws Exception {
         initializeGrid(100, 50);
+        dao = new FileGridDao();
         darkmode = false;
 
     }
@@ -42,13 +49,13 @@ public class GUI extends Application {
             long prev = 0;
             @Override
             public void handle(long current) {
-//                System.out.println(current);
-//                if (current - prev < 1) {
-//                    return;
-//                }
+                System.out.println(current);
+                if (current - prev < 100000000) {
+                    return;
+                }
                 logic.iterate();
                 drawButtons();
-//                this.prev = current;
+                this.prev = current;
             }
         };
         BorderPane panel = new BorderPane();
@@ -120,12 +127,26 @@ public class GUI extends Application {
             darkmode = !darkmode;
             drawButtons();
         });
+        
+        Button save = new Button("Save"); //Move to different panel
+        save.setOnAction((event) -> {
+            try {
+                dao.saveGrid("test", grid); 
+            } catch (IOException exp) {
+                exp.printStackTrace(); //TODO
+            } 
+            
+        });
+        
         sizeSet.setHgap(3);
         sizeSet.setVgap(5);
         sizeSet.getChildren().add(small);
         sizeSet.getChildren().add(medium);
         sizeSet.getChildren().add(large);
+        
         sizeSet.getChildren().add(invert);
+        sizeSet.getChildren().add(save);
+        
         panel.setTop(sizeSet);
         
         ScrollPane scrollable = new ScrollPane(); //Making a scrollpane into which embed the GridPane
@@ -134,10 +155,10 @@ public class GUI extends Application {
 
         GridPane graphics = new GridPane(); //Making the grid
         graphics.isResizable();
-        //graphics.setGridLinesVisible(true);
-        buttons = new Button[grid.getHeight()][grid.getWidth()]; //wip
-        for (int x = 0; x < grid.getHeight(); x++) {
-            for (int y = 0; y < grid.getWidth(); y++) {
+        
+        buttons = new Button[grid.getWidth()][grid.getHeight()]; //make smaller than grid???
+        for (int x = 0; x < grid.getWidth(); x++) {
+            for (int y = 0; y < grid.getHeight(); y++) {
                 Button button = new Button();
                 button.getStyleClass().add("tile");
                 buttons[x][y] = button;
@@ -156,6 +177,7 @@ public class GUI extends Application {
         
         scrollable.setContent(graphics);
         panel.setCenter(scrollable);
+        
         GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
         int width = gd.getDisplayMode().getWidth();
         int height = gd.getDisplayMode().getHeight();
@@ -173,9 +195,13 @@ public class GUI extends Application {
         launch(GUI.class);
     }
 
+//    public void getStyles(){
+//        aliveCell = "tile-alive";
+//        deadCell = "tile-dead";
+//    }
     public void drawButtons() {
-        for (int x = 0; x < grid.getHeight(); x++) {
-            for (int y = 0; y < grid.getWidth(); y++) {
+        for (int x = 0; x < grid.getWidth(); x++) {
+            for (int y = 0; y < grid.getHeight(); y++) {
                 drawButton(x, y);
             }
         }
@@ -184,7 +210,7 @@ public class GUI extends Application {
     public void drawButton(int x, int y) {
         boolean alive = grid.getCoordinate(x, y);
         Button button = buttons[x][y];
-        String style = "";
+        String style;
         if(!darkmode){
             style = (alive) ? "-fx-base: CadetBlue; -fx-background-radius: 0em;" : "-fx-base: LightGoldenRodYellow; -fx-background-radius: 0em;";
         } else {
@@ -221,8 +247,8 @@ public class GUI extends Application {
     }
     
     public void resetGrid(){
-        int width = grid.getWidth();
-        int height = grid.getHeight();
+        int width = grid.getHeight();
+        int height = grid.getWidth();
         initializeGrid(height, width);
     }
 

@@ -5,13 +5,13 @@ import java.util.stream.IntStream;
 
 public class Grid {
 
-    private int xSize;
-    private int ySize;
+    private int width;
+    private int height;
     private boolean[][] states;
 
     public Grid(int x, int y) {
-        this.xSize = x;
-        this.ySize = y;
+        this.width = x;
+        this.height = y;
 
         this.states = new boolean[x][y];
         //Arrays.fill(states, false);
@@ -22,8 +22,8 @@ public class Grid {
 
     public Grid(boolean[][] states) {
         this.states = states;
-        this.xSize = states.length;
-        this.ySize = states[0].length;
+        this.width = states.length;
+        this.height = states[0].length;
     }
 
     public boolean getCoordinate(int x, int y) {
@@ -34,7 +34,7 @@ public class Grid {
     }
 
     public boolean inBounds(int x, int y) {
-        if (x < xSize && y < ySize && x >= 0 && y >= 0) { // testing if index is in-bounds
+        if (x < width && y < height && x >= 0 && y >= 0) { // testing if index is in-bounds
             return true;
         }
         return false;
@@ -63,12 +63,12 @@ public class Grid {
         return this.states.length * this.states[0].length;
     }
 
-    public int getHeight() {
-        return xSize;
+    public int getWidth() {
+        return width;
     }
 
-    public int getWidth() {
-        return ySize;
+    public int getHeight() {
+        return height;
     }
 
     public boolean[][] getStates() {
@@ -76,7 +76,7 @@ public class Grid {
     }
 
     public boolean[][] copyStates() {
-        boolean[][] copy = new boolean[this.xSize][this.ySize];
+        boolean[][] copy = new boolean[this.width][this.height];
         for (int i = 0; i < states.length; i++) {
             copy[i] = states[i].clone();
         }
@@ -85,8 +85,8 @@ public class Grid {
 
     public void setStates(boolean[][] states) {
         this.states = states;
-        xSize = states.length;
-        ySize = states[0].length;
+        width = states.length;
+        height = states[0].length;
     }
 
     public void setState(int x, int y, boolean state) {
@@ -97,5 +97,7 @@ public class Grid {
         boolean current = states[x][y];
         setState(x, y, !current);
     }
-
+    
+    
+    
 }
