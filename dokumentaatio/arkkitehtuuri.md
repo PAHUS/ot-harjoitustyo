@@ -9,7 +9,9 @@ Ohjelma koostuu graafisesta käyttöliittymästä (_cellularautomata.gui_), sove
 
 Käyttöliittymä sisältää yhden näkymän, jossa on [BorderPane](https://docs.oracle.com/javase/8/javafx/api/javafx/scene/layout/BorderPane.html) olioon sijoitettu ylä- ja alapaneeleihin nappuloita, joilla käsitellään paneelin keskelle sijoitettuun [GridPaneen](https://docs.oracle.com/javase/8/javafx/api/javafx/scene/layout/GridPane.html) [nappuloilla](https://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/Button.html) toteutetun ruudukkoon asetuksia (koko, väri) ja toiminnallisuuksia (iterointi, animointi).
 
-Käyttöliittymä on toteutettu luokkaan [cellularautomata.gui.GUI](https://github.com/PAHUS/ot-harjoitustyo/blob/master/CellularAutomata/src/main/java/cellularautomata/gui/GUI.java). Käyttöliittymä viestii sovelluslogiikan kanssa kutsumalla muita luokkia ja niiden metodeja (esim napeilla ja animation timerilla).
+Käyttöliittymä on toteutettu luokkaan [cellularautomata.gui.GUI](https://github.com/PAHUS/ot-harjoitustyo/blob/master/CellularAutomata/src/main/java/cellularautomata/gui/GUI.java). Käyttöliittymä viestii sovelluslogiikan kanssa kutsumalla muita luokkia ja niiden metodeja (esim napeilla ja animation timerilla). Esimerkkinä sekvenssikaavion avulla mitä tapahtuu kun painetaan käyttöliittymän nappia ">" (_iteroi_):
+
+<img src="https://raw.githubusercontent.com/PAHUS/ot-harjoitustyo/master/dokumentaatio/ws.png" width=300>
 
 
 
