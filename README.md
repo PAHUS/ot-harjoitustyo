@@ -3,6 +3,7 @@ This application is a cellular automata implementation with a graphical user int
 
 ## Releases
 ### [Week 5](https://github.com/PAHUS/ot-harjoitustyo/releases/tag/viikko5)
+### [Week 6](https://github.com/PAHUS/ot-harjoitustyo/releases/tag/viikko6)
 
 
 ## Command line commands
@@ -36,11 +37,11 @@ mvn jxr:jxr checkstyle:checkstyle
 Creates a checkstyle report to _target/site/checkstyle.html_ which can be opened in browser.
 
 ## Documentation
+
+[Architecture description](https://github.com/PAHUS/ot-harjoitustyo/blob/master/dokumentaatio/arkkitehtuuri.md),
 [Specification document](https://github.com/PAHUS/ot-harjoitustyo/blob/master/laskarit/viikko2/dokumentointi/alustavaMaarittely.md),
 
 [Work time bookkeeping](https://github.com/PAHUS/ot-harjoitustyo/blob/master/laskarit/viikko2/dokumentointi/tyoaikakirjanpito.md),
-
-[Class diagram](https://github.com/PAHUS/ot-harjoitustyo/blob/master/dokumentaatio/arkkitehtuuri.md),
 
 [Sequence diagram of iterate() method](https://github.com/PAHUS/ot-harjoitustyo/blob/master/dokumentaatio/sequenceDiag.md)
 
