@@ -21,6 +21,10 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
+/**
+ * Handles the GUI of the Application
+ * @author Tande
+ */
 public class GUI extends Application {
 
     private GameLogic logic;
@@ -30,6 +34,10 @@ public class GUI extends Application {
     private boolean darkmode;
     private GridDao dao;
 
+    /**
+     * Initializes the default values of the application
+     * @throws Exception 
+     */
     @Override
     public void init() throws Exception {
         initializeGrid(100, 50);
@@ -38,6 +46,10 @@ public class GUI extends Application {
 
     }
 
+    /**
+     * Defines the GUI
+     * @param window 
+     */
     @Override
     public void start(Stage window) {
         
@@ -48,7 +60,6 @@ public class GUI extends Application {
             long prev = 0;
             @Override
             public void handle(long current) {
-                System.out.println(current);
                 if (current - prev < 100000000) {
                     return;
                 }

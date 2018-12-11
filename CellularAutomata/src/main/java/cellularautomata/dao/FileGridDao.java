@@ -11,8 +11,17 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * This class contains methods for saving Grid objects to a files and converting files to Grid objects
+ * @author Tande
+ */
 public class FileGridDao implements GridDao {
-
+    /**
+     * This saves a Grid to a CSV file
+     * @param key the name of the created file. Also the key of the Grid.
+     * @param grid  Grid to be converted
+     * @throws IOException 
+     */
     @Override
     public void saveGrid(String key, Grid grid) throws IOException {
         List<String> data = serialize(grid);
@@ -23,11 +32,22 @@ public class FileGridDao implements GridDao {
         Files.write(path, data);
     }
 
+    /**
+     * Deletes the specified file.
+     * @param key The name of the file to be deleted
+     */
     @Override
     public void deleteGrid(String key) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    /**
+     * Load a Grid of the specified name from a file
+     * @param name the name of the Grid that will be loaded
+     * @return returns the Grid
+     * @throws IOException
+     * @throws FileNotFoundException 
+     */
     @Override
     public Grid loadGrid(String name) throws IOException, FileNotFoundException {
         File fileName = new File(name + ".csv");
