@@ -42,6 +42,7 @@ public class GUI extends Application {
 
     @Override
     public void start(Stage window) {
+        
         window.setTitle("Cellular Automaton"); //Setup of stage settings
         window.centerOnScreen();
 
@@ -127,11 +128,11 @@ public class GUI extends Application {
             darkmode = !darkmode;
             drawButtons();
         });
-        
         Button save = new Button("Save"); //Move to different panel
         save.setOnAction((event) -> {
             try {
                 dao.saveGrid("test", grid); 
+                
             } catch (IOException exp) {
                 exp.printStackTrace(); //TODO
             } 
