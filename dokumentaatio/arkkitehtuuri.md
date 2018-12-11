@@ -11,7 +11,7 @@ Käyttöliittymä sisältää yhden näkymän, jossa on [BorderPane](https://doc
 
 Käyttöliittymä on toteutettu luokkaan [cellularautomata.gui.GUI](https://github.com/PAHUS/ot-harjoitustyo/blob/master/CellularAutomata/src/main/java/cellularautomata/gui/GUI.java). Käyttöliittymä viestii sovelluslogiikan kanssa kutsumalla muita luokkia ja niiden metodeja (esim napeilla ja animation timerilla). Esimerkkinä sekvenssikaavion avulla mitä tapahtuu kun painetaan käyttöliittymän nappia ">" (_iteroi_):
 
-<img src="https://raw.githubusercontent.com/PAHUS/ot-harjoitustyo/master/dokumentaatio/ws.png" width=300>
+<img src="https://raw.githubusercontent.com/PAHUS/ot-harjoitustyo/master/dokumentaatio/ws.png" width=700>
 
 
 
