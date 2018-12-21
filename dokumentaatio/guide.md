@@ -19,9 +19,9 @@ and the ruleset. So you set the initial state of the array and after that the ga
 ## How to use the application
 1. Set the starting state/pattern by 
 
-⋅⋅* selecting the cells you want to be alive
+- selecting the cells you want to be alive
 
-⋅⋅* Click "Load" to load the exaple starting state, or your own saved state
+- Click "Load" to load the exaple starting state, or your own saved state
 
 2. Iterate the array, either by pressing ">" to iterate a single time or by pressing "Start" to start the animation which iterates the array
 several times a second. You can stop the animation by pressing the same button, or switch the speed by pressing the corresponding button.
