@@ -17,7 +17,7 @@ and the ruleset. So you set the initial state of the array and after that the ga
   3. Otherwise the cell stays/will become dead
 
 ## How to use the application
-1. Set the starting state/pattern by 
+1. Set the starting state/pattern by either
 
 - selecting the cells you want to be alive
 
