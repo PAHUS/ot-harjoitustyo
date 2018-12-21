@@ -33,7 +33,8 @@ public class GUI extends Application {
     private Button[][] buttons;
     private boolean darkmode;
     private GridDao dao;
-
+    private int speed;
+    
     /**
      * Initializes the default values of the application
      * @throws Exception 
@@ -41,6 +42,7 @@ public class GUI extends Application {
     @Override
     public void init() throws Exception {
         initializeGrid(100, 50);
+        speed = 100000000;
         dao = new FileGridDao();
         darkmode = false;
 
@@ -56,11 +58,12 @@ public class GUI extends Application {
         window.setTitle("Cellular Automaton"); // Setup of stage settings
         window.centerOnScreen();
 
+        
         AnimationTimer timer = new AnimationTimer() { // Initializing Animation timer
             long prev = 0;
             @Override
             public void handle(long current) {
-                if (current - prev < 100000000) {
+                if (current - prev < speed) {
                     return;
                 }
                 logic.iterate();
@@ -103,11 +106,17 @@ public class GUI extends Application {
             }
         });
         
+        Button changeSpeed = new Button("Switch speed");
+        changeSpeed.setOnAction((event ->{
+            switchSpeed();
+        }));
+        
         actions.setHgap(3);
         actions.setVgap(5);
         actions.getChildren().add(reset);
         actions.getChildren().add(next);
         actions.getChildren().add(start);
+        actions.getChildren().add(changeSpeed);
         panel.setBottom(actions);
         
         FlowPane sizeSet = new FlowPane(); //Setting Size buttons
@@ -211,7 +220,7 @@ public class GUI extends Application {
         window.setScene(defaultScene);
         window.show();
 
-    }
+    };
 
     public static void main(String[] args) {
         launch(GUI.class);
@@ -268,6 +277,11 @@ public class GUI extends Application {
         int height = grid.getHeight();
         int width = grid.getWidth();
         initializeGrid(width, height);
+    }
+    
+    private void switchSpeed(){
+        if (speed == 100000000) speed = 100;
+        else speed = 100000000;
     }
 
    

@@ -15,9 +15,11 @@ public class CellularAutomataTest {
     Grid grid;
     Grid grid2;
     Grid grid3;
+    Grid grid4;
     GameLogic gl;
     GameLogic gl2;
     GameLogic gl3;
+    GameLogic gl4;
     Rules r1;
 
     @Before
@@ -29,10 +31,15 @@ public class CellularAutomataTest {
         {false, true, false, false},
         {false, true, false, false},
         {false, true, false, false}});
+        this.grid4 = new Grid(new boolean[][]{{false, false, true, true, false}, // 0 0 1 1 0   0 1 1 1 0   0 1 1 1 0   0 1 1 1 1 
+            {true, true, false, true, false},                                   //  1 1 0 1 0   1 0 0 1 0   1 0 0 1 1   1 0 0 0 1
+            {false, true, true, false, false},                                 //   0 1 1 0 0   1 1 0 0 1   1 1 0 0 1   1 0 0 0 1
+            {false, false, false, true, true}});                              //    0 0 0 1 1   0 0 1 1 0   0 1 1 1 0   1 1 1 1 0
         this.r1 = new GameOfLifeRules();
         this.gl = new GameLogic(grid, r1);
         this.gl2 = new GameLogic(grid2, r1);
         this.gl3 = new GameLogic(grid3, r1);
+        this.gl4 = new GameLogic(grid4, r1);
     }
 
     @Test
@@ -106,6 +113,20 @@ public class CellularAutomataTest {
         {true, true, true, false},
         {false, false, false, false}};
         assertThat(gl3.getGrid().getStates(), is(correct));
+    }
+    
+    @Test
+    public void correctAfterSeveralIterations() {
+        gl4.iterate();
+        gl4.iterate();
+        gl4.iterate();
+        
+        boolean[][] correct = new boolean[][]{{false, true, true, true, true},       //    0 1 1 1 1
+                {true, false, false, false, true},                                  //     1 0 0 0 1 
+                {true, false, false, false, true},                                 //      1 0 0 0 1
+                {true, true, true, true, true}};                                 //       1 1 1 1 0
+        assertThat(gl4.getGrid().getStates(), is(correct));
+        
     }
     /*
     @AfterClass
