@@ -37,6 +37,7 @@ mvn jxr:jxr checkstyle:checkstyle
 Creates a checkstyle report to _target/site/checkstyle.html_ which can be opened in browser.
 
 ## Documentation
+[User guide](https://github.com/PAHUS/ot-harjoitustyo/blob/master/dokumentaatio/guide.md),
 
 [Architecture description](https://github.com/PAHUS/ot-harjoitustyo/blob/master/dokumentaatio/arkkitehtuuri.md),
 
