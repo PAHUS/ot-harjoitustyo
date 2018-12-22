@@ -128,17 +128,4 @@ public class CellularAutomataTest {
         assertThat(gl4.getGrid().getStates(), is(correct));
         
     }
-    /*
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
-    @Before
-    public void setUp() {
-    }
-    
-    @After
-    public void tearDown() {
-    }*/
-
 }

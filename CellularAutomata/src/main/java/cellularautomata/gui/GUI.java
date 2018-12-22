@@ -168,7 +168,9 @@ public class GUI extends Application {
                 start(window);
                 window.centerOnScreen();
             } catch (IOException exp) {
-                //exp.printStackTrace();
+                timer.stop();
+                resetGrid();
+                start(window);
             }
         });
         
@@ -245,15 +247,6 @@ public class GUI extends Application {
         }
         
         button.setStyle(style);
-        //        String style = "";
-//        if(!darkmode){
-//            style = (alive) ? "tile-alive" : "tile-dead";
-//        } else{
-//            style = (!alive) ? "tile-alive" : "tile-dead";
-//        }
-//        button.getStyleClass().removeAll("tile-alive", "tile-dead");
-//        button.getStyleClass().add(style);
-        
     }
     
     private double getScreenWidth(){
