@@ -124,7 +124,7 @@ public class CellularAutomataTest {
         boolean[][] correct = new boolean[][]{{false, true, true, true, true},       //    0 1 1 1 1
                 {true, false, false, false, true},                                  //     1 0 0 0 1 
                 {true, false, false, false, true},                                 //      1 0 0 0 1
-                {true, true, true, true, true}};                                 //       1 1 1 1 0
+                {true, true, true, true, false}};                                 //       1 1 1 1 0
         assertThat(gl4.getGrid().getStates(), is(correct));
         
     }
