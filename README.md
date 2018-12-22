@@ -4,7 +4,7 @@ This application is a cellular automata implementation with a graphical user int
 ## Releases
 ### [Week 5](https://github.com/PAHUS/ot-harjoitustyo/releases/tag/viikko5)
 ### [Week 6](https://github.com/PAHUS/ot-harjoitustyo/releases/tag/viikko6)
-### [Week 6](https://github.com/PAHUS/ot-harjoitustyo/releases/tag/viikko7)
+### [Week 7](https://github.com/PAHUS/ot-harjoitustyo/releases/tag/viikko7)
 
 ## Command line commands
 ### Running the program
