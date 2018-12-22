@@ -45,5 +45,7 @@ Creates a checkstyle report to _target/site/checkstyle.html_ which can be opened
 
 [Work time bookkeeping](https://github.com/PAHUS/ot-harjoitustyo/blob/master/laskarit/viikko2/dokumentointi/tyoaikakirjanpito.md),
 
-[Sequence diagram of iterate() method](https://github.com/PAHUS/ot-harjoitustyo/blob/master/dokumentaatio/sequenceDiag.md)
+[Sequence diagram of iterate() method](https://github.com/PAHUS/ot-harjoitustyo/blob/master/dokumentaatio/sequenceDiag.md),
+
+[Testing document](https://github.com/PAHUS/ot-harjoitustyo/blob/master/dokumentaatio/TestingDocument.md)
 
