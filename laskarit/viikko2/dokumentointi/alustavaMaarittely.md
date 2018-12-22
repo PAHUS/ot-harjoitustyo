@@ -9,11 +9,12 @@ Suunnitelmana olisi alustavasti tarkoituksena toteuttaa toimimaan Conway's Game 
 2. solu pysyy elävänä jos 2 tai 3 sen naapureista elää
 3. muutoin solu kuolee tai pysyy kuolleena
 
-Sovelluspohjalla voi toteuttaa myös muita soluautomaatteja (eli eri säännöstöjä), kuten Rule 110
-tai Game Of Lifen muunnoksia 
+Sovelluspohjalla voisi toteuttaa myös muita soluautomaatteja (eli eri säännöstöjä), kuten Rule 110
+tai Game Of Lifen muunnoksia, mutta nämä eivät ole tämänhetkisessä versiossa.
 
-## Suunnitellut toiminnallisuudet
-- Graafinen käyttöliittymä, jossa käyttäjä voi määritellä alkutilan
+## Lisätyt toiminnallisuudet
+- Graafinen käyttöliittymä, jossa käyttäjä voi määritellä alkutilan, tai muuntaa sen hetkistä tilaa
+- Erilaisia asetuksia käyttöliittymälle, kuten ruudukon koko, animaation nopeus ja ruudukon resettaus
 - Animaatio automaatin iteraatioista
-- Alkutilojen tallennus tietokantaan ja tallennettujen alkutilojen lataus
+- Alkutilojen tallennus tietokantaan ja tallennettun alkutilann lataus
 
