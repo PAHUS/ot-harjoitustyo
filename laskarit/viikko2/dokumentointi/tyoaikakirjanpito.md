@@ -15,7 +15,7 @@
 | 6 | 10.12.   | 2 | Created ScrollPane and edited layout |
 | 6 | 11.12.   | 11 | Made DAO to read and write files to and from Grid-objects  |
 ||||SECOND RELEASE |
-| 7 | 21.12.   | 3 | Added more tests, added animation speed switch and made changes to DAO (didn't make it to final release)  |
+| 7 | 21.12.   | 5 | Added more tests, added animation speed switch and made changes to DAO (didn't make it to final release)  |
 ||||and added some documentation |
 | 7 | 22.12.   | 1 | Added documentation|
 ||||FINAL RELEASE |
